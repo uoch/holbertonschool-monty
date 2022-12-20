@@ -11,6 +11,7 @@
 #include <fcntl.h>
 #include <ctype.h>
 #define DELIM " \t\r\n\a"
+extern unsigned int line_number;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)

@@ -1,4 +1,5 @@
 #include "monty.h"
+
 /**
  * _push - pushes a node to a stack
  * @stack: head of the stack
@@ -77,7 +78,6 @@ char **parser(char *buff, char *limit)
 	cmd[idx] = NULL;
 	return (cmd);
 }
-
 /**
  * free_stack - free the stack
  * @stack: ptr to stack
@@ -114,7 +114,6 @@ void get_op_func(char **tokens, stack_t **stack)
 		{"pop", pop},
 		{NULL, NULL}};
 	int idx = 0;
-	unsigned int line_number = 0;
 
 	while (ops[idx].opcode)
 	{
@@ -150,7 +149,6 @@ void get_op_func(char **tokens, stack_t **stack)
 void is_valid(char **token, stack_t **stack)
 {
 	int idx = 0;
-	unsigned int line_number = 0;
 
 	if (!token[1])
 	{

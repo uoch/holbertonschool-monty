@@ -1,6 +1,6 @@
 #include "monty.h"
+unsigned int line_number =0;
 
-unsigned int line_number = 0;
 
 /**
  * main - control program flow
@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 
 	while (getline(&buffer, &n, fp) > 0)
 	{
-		line_number++;
+		++line_number;
 		tokens = parser(buffer, DELIM); /* result is at top of list */
 		if (tokens)
 		{
@@ -41,7 +41,5 @@ int main(int argc, char *argv[])
 	free(buffer);
 	free_stack(&head);
 	fclose(fp);
-	exit(EXIT_SUCCESS);
-
 	return (0);
 }

@@ -49,6 +49,13 @@ void get_op_func(char **tokens, stack_t **stack);
 void is_valid(char **token, stack_t **stack);
 void pint(stack_t **stack, unsigned int n);
 void pop(stack_t **stack, unsigned int n);
+void swap(stack_t **stack, unsigned int line_number);
+void add(stack_t **stack, unsigned int line_number);
+void nop(stack_t **stack, unsigned int line_number);
+
+
+
+
 
 
 

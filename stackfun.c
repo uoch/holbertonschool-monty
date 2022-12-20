@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * _push - pushes a node to a stack
+ * push - pushes a node to a stack
  * @stack: head of the stack
  * @n: line number
  */
@@ -30,7 +30,7 @@ void push(stack_t **stack, unsigned int n)
 	}
 }
 /**
- * _pall - prints a stack
+ * pall - prints a stack
  * @stack: pointer to a stack_t
  * @n: line number
  */
@@ -112,6 +112,9 @@ void get_op_func(char **tokens, stack_t **stack)
 		{"pall", pall},
 		{"pint", pint},
 		{"pop", pop},
+		{"swap", swap},
+		{"add", add},
+		{"nop", nop},
 		{NULL, NULL}};
 	int idx = 0;
 
@@ -190,7 +193,7 @@ void pint(stack_t **stack, unsigned int n)
 	fprintf(stdout, "%d\n", (*stack)->n);
 }
 /**
- * _pop - remove the top elem of a stack
+ * pop - remove the top elem of a stack
  * @stack: pointer to top of a stack
  * @n: line number
  */
@@ -217,4 +220,59 @@ void pop(stack_t **stack, unsigned int n)
 		*stack = NULL;
 
 	free(node);
+}
+/**
+ * swap - swaps the data in two nodes
+ * @stack: pointer to a stack_t
+ * @line_number: line number
+ */
+void swap(stack_t **stack, unsigned int line_number)
+{
+	int store = 0;
+
+	if ((stack == NULL) || (*stack == NULL) || ((*stack)->next) == NULL)
+	{
+		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
+		if (*stack)
+			free_stack(stack);
+		exit(EXIT_FAILURE);
+	}
+
+	(void)line_number;
+
+	store = (*stack)->next->n;
+	(*stack)->next->n = (*stack)->n;
+	(*stack)->n = store;
+}
+/**
+ * add - swaps the data in two nodes
+ * @stack: pointer to a stack_t
+ * @line_number: line number
+ */
+void add(stack_t **stack, unsigned int line_number)
+{
+	if (stack == NULL || (*stack == NULL) || ((*stack)->next == NULL))
+	{
+		fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
+		if (*stack)
+			free_stack(stack);
+		exit(EXIT_FAILURE);
+	}
+	(*stack)->next->n = ((*stack)->next->n) + ((*stack)->n);
+	pop(stack, line_number);
+}
+/**
+ * nop - doesn’t do anything
+ * @stack: pointer to a stack_t
+ * @line_number: line number
+ */
+void nop(stack_t **stack, unsigned int line_number)
+{
+	if (stack == NULL || (*stack == NULL) || ((*stack)->next == NULL))
+	{
+		fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
+		if (*stack)
+			free_stack(stack);
+		exit(EXIT_FAILURE);
+	}
 }

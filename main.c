@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 	stack_t *head = NULL;
 	char *buffer = NULL;
 	FILE *fp;
-	size_t n;
+	size_t n = 1;
 
 	if (argc != 2)
 	{
@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
 		if (tokens)
 		{
 			get_op_func(tokens, &head);
-			free(tokens);
+			freeArr(tokens);
 		}
 	}
 	free(buffer);

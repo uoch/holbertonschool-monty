@@ -76,6 +76,7 @@ char **parser(char *buff, char *limit)
 	}
 	cmd = realloc(cmd, ((idx + 1) * sizeof(char *)));
 	cmd[idx] = NULL;
+	free(ptr);
 	return (cmd);
 }
 /**
@@ -275,4 +276,16 @@ void nop(stack_t **stack, unsigned int line_number)
 			free_stack(stack);
 		exit(EXIT_FAILURE);
 	}
+}
+void freeArr(char **array)
+{
+	int i;
+
+	for (i = 0; array[i]; i++)
+	{
+		free(array[i]);
+		array[i] = NULL;
+	}
+	free(array);
+	array = NULL;
 }

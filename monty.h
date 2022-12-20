@@ -46,5 +46,9 @@ void free_stack(stack_t **stack);
 char **parser(char *buff, char *limit);
 void get_op_func(char **tokens, stack_t **stack);
 void is_valid(char **token, stack_t **stack);
+void pint(stack_t **stack, unsigned int n);
+void pop(stack_t **stack, unsigned int n)
+
+
 
 #endif

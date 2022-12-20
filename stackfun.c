@@ -28,7 +28,6 @@ void push(stack_t **stack, unsigned int n)
 		*stack = node;
 	}
 }
-
 /**
  * _pall - prints a stack
  * @stack: pointer to a stack_t
@@ -49,7 +48,6 @@ void pall(stack_t **stack, unsigned int n)
 		node = node->next;
 	}
 }
-
 /**
  * split - function taht split the input in an array of string
  * @buff: the input
@@ -79,6 +77,7 @@ char **parser(char *buff, char *limit)
 	cmd[idx] = NULL;
 	return (cmd);
 }
+
 /**
  * free_stack - free the stack
  * @stack: ptr to stack
@@ -99,11 +98,14 @@ void free_stack(stack_t **stack)
 		free(head->prev);
 	}
 }
+
 void get_op_func(char **tokens, stack_t **stack)
 {
 	instruction_t ops[] = {
 		{"push", push},
 		{"pall", pall},
+		{"pint", pint},
+		{"pop", pop},
 		{NULL, NULL}};
 	int idx = 0;
 	unsigned int line_number = 0;
@@ -134,6 +136,7 @@ void get_op_func(char **tokens, stack_t **stack)
 		exit(EXIT_FAILURE);
 	}
 }
+
 void is_valid(char **token, stack_t **stack)
 {
 	int idx = 0;
@@ -162,4 +165,48 @@ void is_valid(char **token, stack_t **stack)
 		}
 		idx++;
 	}
+}
+/**
+ * pint - prints the top for the stack
+ * @stack: pointered to a stack
+ * @n: line number that opcode is call at.
+ */
+void pint(stack_t **stack, unsigned int n)
+{
+	if (!stack || !(*stack))
+	{
+		fprintf(stderr, "L%u: can't pint, stack empty\n", n);
+		exit(EXIT_FAILURE);
+	}
+
+	fprintf(stdout, "%d\n", (*stack)->n);
+}
+/**
+ * _pop - remove the top elem of a stack
+ * @stack: pointer to top of a stack
+ * @n: line number
+ */
+void pop(stack_t **stack, unsigned int n)
+{
+	stack_t *node;
+
+	(void) n;
+
+	if (!stack || !(*stack))
+	{
+		fprintf(stderr, "L%u: can't pop an empty stack\n", n);
+		exit(EXIT_FAILURE);
+	}
+
+	node = *stack;
+
+	if ((*stack)->next)
+	{
+		*stack = (*stack)->next;
+		(*stack)->prev = NULL;
+	}
+	else
+		*stack = NULL;
+
+	free(node);
 }

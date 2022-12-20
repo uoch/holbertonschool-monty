@@ -49,7 +49,7 @@ void pall(stack_t **stack, unsigned int n)
 	}
 }
 /**
- * split - function taht split the input in an array of string
+ * parser - function taht split the input in an array of string
  * @buff: the input
  * @limit: the delimenter
  * Return: array of string
@@ -98,7 +98,13 @@ void free_stack(stack_t **stack)
 		free(head->prev);
 	}
 }
-
+/**
+ * call - call appropriate function
+ * @tokens: pointer to array of tokens
+ * @stack: pointer to a stack
+ *
+ * Return: nothing
+ */
 void get_op_func(char **tokens, stack_t **stack)
 {
 	instruction_t ops[] = {
@@ -136,7 +142,11 @@ void get_op_func(char **tokens, stack_t **stack)
 		exit(EXIT_FAILURE);
 	}
 }
-
+/**
+ * is_valid - check if second spot of a token array is valid
+ * @token: tokens value to check
+ * @stack: pointer to a stack
+ */
 void is_valid(char **token, stack_t **stack)
 {
 	int idx = 0;
@@ -190,7 +200,7 @@ void pop(stack_t **stack, unsigned int n)
 {
 	stack_t *node;
 
-	(void) n;
+	(void)n;
 
 	if (!stack || !(*stack))
 	{

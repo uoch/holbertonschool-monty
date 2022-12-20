@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 
-	while ((getline(&buffer, &n, fp)) != -1)
+	while (getline(&buffer, &n, fp) > 0)
 	{
 		line_number++;
 		tokens = parser(buffer, DELIM); /* result is at top of list */
@@ -41,6 +41,7 @@ int main(int argc, char *argv[])
 	free(buffer);
 	free_stack(&head);
 	fclose(fp);
+	exit(EXIT_SUCCESS);
 
 	return (0);
 }

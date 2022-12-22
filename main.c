@@ -1,6 +1,5 @@
 #include "monty.h"
 unsigned int line_number = 0;
-
 /**
  * main - control program flow
  * @argc: argument count
@@ -10,10 +9,10 @@ unsigned int line_number = 0;
 int main(int argc, char *argv[])
 {
 	char **tokens = NULL;
-	stack_t *head = NULL;
-	char *buffer = NULL;
-	FILE *fp;
 	size_t n = 1;
+	FILE *fp;
+	char *buffer = NULL;
+	stack_t *head = NULL;
 
 	if (argc != 2)
 	{
@@ -26,7 +25,6 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-
 	while (getline(&buffer, &n, fp) > 0)
 	{
 		++line_number;

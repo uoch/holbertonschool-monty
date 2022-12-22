@@ -9,6 +9,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#define ignore(x) (void)(x)
 #include <ctype.h>
 #define DELIM " \t\r\n\a"
 extern unsigned int line_number;

@@ -169,7 +169,7 @@ void sub(stack_t **stack, unsigned int line_number)
 	pop(stack, line_number);
 }
 /**
- * div - swaps the data in two nodes
+ * divh - swaps the data in two nodes
  * @stack: pointer to a stack_t
  * @line_number: line number
  */

@@ -135,7 +135,7 @@ void mod(stack_t **stack, unsigned int line_number)
 	pop(stack, line_number);
 }
 /**
- * div - swaps the data in two nodes
+ * mul - swaps the data in two nodes
  * @stack: pointer to a stack_t
  * @line_number: line number
  */
@@ -152,7 +152,7 @@ void mul(stack_t **stack, unsigned int line_number)
 	pop(stack, line_number);
 }
 /**
- * div - swaps the data in two nodes
+ * sub - swaps the data in two nodes
  * @stack: pointer to a stack_t
  * @line_number: line number
  */

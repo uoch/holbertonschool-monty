@@ -15,6 +15,10 @@ void get_op_func(char **tokens, stack_t **stack)
 		{"pop", pop},
 		{"swap", swap},
 		{"add", add},
+		{"add", sub},
+		{"add", mul},
+		{"add", mod},
+		{"add", divh},
 		{"nop", nop},
 		{NULL, NULL}};
 	int idx = 0;
